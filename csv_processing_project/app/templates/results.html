@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processed Results</title>
+</head>
+<body>
+    <h1>Processed Results for {{ csv_file.file.name }}</h1>
+
+    <form method="GET">
+        <input type="text" name="search" placeholder="Search by column name" value="{{ search_query }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Column</th>
+            <th>Sum</th>
+            <th>Average</th>
+            <th>Count</th>
+        </tr>
+        {% for result in processed_results %}
+        <tr>
+            <td>{{ result.column_name }}</td>
+            <td>{{ result.sum_value }}</td>
+            <td>{{ result.average_value }}</td>
+            <td>{{ result.count_value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

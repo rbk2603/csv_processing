@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processed Results</title>
+</head>
+<body>
+    <h2>Processed Results for {{ csv_file.file.name }}</h2>
+
+    <table border="1">
+        <tr>
+            <th>Column</th>
+            <th>Sum</th>
+            <th>Average</th>
+            <th>Count</th>
+        </tr>
+        {% for result in processed_data %}
+        <tr>
+            <td>{{ result.column_name }}</td>
+            <td>{{ result.sum_value }}</td>
+            <td>{{ result.average_value }}</td>
+            <td>{{ result.count_value }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No processed data available</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'upload_csv' %}">Upload another CSV</a>
+</body>
+</html>
